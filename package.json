@@ -1,7 +1,7 @@
 {
   "name": "projeto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kit de ferramentas de automação de tarefas baseada em JavaScript",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,5 +28,13 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^5.1.0",
     "jquery": "^3.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroruangd/gulp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pedroruangd/gulp/issues"
+  },
+  "homepage": "https://github.com/pedroruangd/gulp#readme"
 }
