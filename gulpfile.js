@@ -3,8 +3,9 @@ const concat = require('gulp-concat')
 const cssmin = require('gulp-cssmin')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
+const image = require('gulp-image')
 
-function tarefasCSS(cb) {
+function tarefasCSS() {
 
     return gulp.src([
             './vendor/**/*.css',
@@ -38,9 +39,9 @@ function tarefasImagem() {
     return gulp.src('./assets/images/*')
         .pipe(image({
             pngquant: true,
-            optipng: true,
+            optipng: false,
             zopflipng: true,
-            jpegRecompress: true,
+            jpegRecompress: false,
             mozjpeg: true,
             gifsicle: true,
             svgo: true,
