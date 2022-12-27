@@ -1,4 +1,4 @@
-const { series, parallel} = require('gulp')
+const { series, parallel } = require('gulp')
 const gulp = require('gulp')
 const concat = require('gulp-concat')
 const cssmin = require('gulp-cssmin')
@@ -21,17 +21,17 @@ function tarefasCSS(cb) {
             './vendor/jquery-ui/jquery-ui.css',
             './src/css/style.css'
         ])
-        .pipe(stripCss())                   // remove comentários css   
-        .pipe(concat('styles.css'))         // mescla arquivos
-        .pipe(cssmin())                     // minifica css
-        .pipe(rename({ suffix: '.min'}))    // styles.min.css
-        .pipe(gulp.dest('./dist/css'))      // cria arquivo em novo diretório
+        .pipe(stripCss()) // remove comentários css   
+        .pipe(concat('styles.css')) // mescla arquivos
+        .pipe(cssmin()) // minifica css
+        .pipe(rename({ suffix: '.min' })) // styles.min.css
+        .pipe(gulp.dest('./dist/css')) // cria arquivo em novo diretório
 
     cb()
 
 }
 
-function tarefasJS(callback){
+function tarefasJS(callback) {
 
     gulp.src([
             './node_modules/jquery/dist/jquery.js',
@@ -45,16 +45,16 @@ function tarefasJS(callback){
             comments: false,
             presets: ['@babel/env']
         }))
-        .pipe(concat('scripts.js'))         // mescla arquivos
-        .pipe(uglify())                     // minifica js
-        .pipe(rename({ suffix: '.min'}))    // scripts.min.js
-        .pipe(gulp.dest('./dist/js'))       // cria arquivo em novo diretório
+        .pipe(concat('scripts.js')) // mescla arquivos
+        .pipe(uglify()) // minifica js
+        .pipe(rename({ suffix: '.min' })) // scripts.min.js
+        .pipe(gulp.dest('./dist/js')) // cria arquivo em novo diretório
 
     return callback()
 }
 
-function tarefasImagem(){
-    
+function tarefasImagem() {
+
     return gulp.src('./src/images/*')
         .pipe(image({
             pngquant: true,
@@ -71,7 +71,7 @@ function tarefasImagem(){
 }
 
 // POC - Proof of Concept
-function tarefasHTML(callback){
+function tarefasHTML(callback) {
 
     gulp.src('./src/**/*.html')
         .pipe(htmlmin({ collapseWhitespace: true }))
@@ -81,7 +81,7 @@ function tarefasHTML(callback){
 
 }
 
-gulp.task('serve', function(){
+gulp.task('serve', function() {
 
     browserSync.init({
         server: {
@@ -94,7 +94,7 @@ gulp.task('serve', function(){
 })
 
 // series x parallel
-const process = series( tarefasHTML, tarefasJS, tarefasCSS)
+const process = series(tarefasHTML, tarefasJS, tarefasCSS)
 
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
