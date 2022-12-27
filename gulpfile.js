@@ -19,6 +19,7 @@ function tarefasCSS(cb) {
             './node_modules/@fortawesome/fontawesome-free/css/fontawesome.css',
             './vendor/owl/css/owl.css',
             './vendor/jquery-ui/jquery-ui.css',
+            './src/css/libs.min.css',
             './src/css/style.css'
         ])
         .pipe(stripCss()) // remove comentários css   
