@@ -12,13 +12,16 @@ const babel = require('gulp-babel')
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
 
-function tarefasCSS(cb) {
+function tarefasCSS(callback) {
 
     gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.css',
             './node_modules/@fortawesome/fontawesome-free/css/fontawesome.css',
             './vendor/owl/css/owl.css',
-            './vendor/jquery-ui/jquery-ui.css'
+            './vendor/jquery-ui/jquery-ui.css',
+            './src/css/style.css'
+
+
         ])
         .pipe(stripCss()) // remove comentários css   
         .pipe(concat('styles.css')) // mescla arquivos
@@ -26,7 +29,7 @@ function tarefasCSS(cb) {
         .pipe(rename({ suffix: '.min' })) // styles.min.css
         .pipe(gulp.dest('./dist/css')) // cria arquivo em novo diretório
 
-    cb()
+    return callback()
 
 }
 
@@ -37,7 +40,7 @@ function tarefasJS(callback) {
             './node_modules/bootstrap/dist/js/bootstrap.js',
             './vendor/owl/js/owl.js',
             './vendor/jquery-mask/jquery.mask.js',
-            // './vendor/jquery-ui/jquery-ui.js',
+            //'./vendor/jquery-ui/jquery-ui.js',
             './src/js/custom.js'
         ])
         .pipe(babel({
@@ -98,7 +101,7 @@ function end(cb) {
 }
 
 // series x parallel
-const process = series(tarefasHTML, tarefasJS, tarefasCSS, tarefasImagem, end)
+const process = series(tarefasHTML, tarefasJS, tarefasCSS, end)
 
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
