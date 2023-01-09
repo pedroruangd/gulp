@@ -20,8 +20,6 @@ function tarefasCSS(callback) {
             './vendor/owl/css/owl.css',
             './vendor/jquery-ui/jquery-ui.css',
             './src/css/style.css'
-
-
         ])
         .pipe(stripCss()) // remove comentários css   
         .pipe(concat('styles.css')) // mescla arquivos
@@ -101,7 +99,7 @@ function end(cb) {
 }
 
 // series x parallel
-const process = series(tarefasHTML, tarefasJS, tarefasCSS, end)
+const process = series(tarefasHTML, tarefasJS, tarefasCSS, tarefasImagem, end)
 
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
