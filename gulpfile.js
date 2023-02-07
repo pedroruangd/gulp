@@ -110,7 +110,7 @@ function end(cb){
 }
 
 // series x parallel
-const process = parallel( tarefasHTML, tarefasJS, tarefasCSS, tarefasSASS, end)
+const process = parallel( tarefasHTML, tarefasImagem, tarefasJS, tarefasCSS, tarefasSASS, end)
 
 exports.styles = tarefasCSS
 exports.scripts = tarefasJS
