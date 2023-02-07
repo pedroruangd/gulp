@@ -11,6 +11,8 @@ const htmlmin = require('gulp-htmlmin')
 const babel = require('gulp-babel')
 const browserSync = require('browser-sync').create()
 const sass = require('gulp-sass')( require('node-sass'))
+const { pipe } = require('stdout-stream')
+const { contains } = require('jquery')
 const reload = browserSync.reload
 
 function tarefasCSS(cb) {
@@ -22,7 +24,7 @@ function tarefasCSS(cb) {
             './vendor/jquery-ui/jquery-ui.css'
         ])
         .pipe(stripCss())                   // remove comentários css   
-        .pipe(concat('libs.css'))         // mescla arquivos
+        .pipe(concat('libs.css'))           // mescla arquivos
         .pipe(cssmin())                     // minifica css
         .pipe(rename({ suffix: '.min'}))    // libs.min.css
         .pipe(gulp.dest('./dist/css'))      // cria arquivo em novo diretório
@@ -32,10 +34,10 @@ function tarefasCSS(cb) {
 }
 
 function tarefasSASS(cb) {
-
+    
     gulp.src('./src/scss/**/*.scss')
-    .pipe(sass()) // transforma o sass em css
-    .pipe(gulp.dest('./dist/css'))
+        .pipe(sass()) // transforma o sass para css
+        .pipe(gulp.dest('./dist/css')) 
 
     cb()
 }
